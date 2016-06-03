@@ -175,8 +175,16 @@ class AppController extends Controller
             $errors[] = "Username is required";
         }
 
+        if (strlen(Request::$post->get('username')) < 3) {
+            $errors[] = "Username must be at least 3 characters long";
+        }
+
         if (!Request::$post->get('password')) {
             $errors[] = "Password is required";
+        }
+
+        if (strlen(Request::$post->get('password')) < 6) {
+            $errors[] = "Password must be at least 6 characters long";
         }
 
         if (!Request::$post->get('email')) {
